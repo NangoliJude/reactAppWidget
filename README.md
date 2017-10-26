@@ -1,5 +1,5 @@
 ## reactAppWidget
-Simple implementation of a widget and embedding it in another application.
+Simple implementation of a widget in react and embedding it in another application.
 
 App Installation
 - `npm i` install packages
