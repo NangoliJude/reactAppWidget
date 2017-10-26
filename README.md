@@ -13,4 +13,3 @@ App Installation
             initTag: "app"
         });
     </script>
-    ```
