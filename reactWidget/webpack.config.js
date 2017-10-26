@@ -4,7 +4,10 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'bin'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        library: 'MyApp',
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
     },
     module: {
         rules: [
