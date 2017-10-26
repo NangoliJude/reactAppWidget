@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: './src/index.js',
@@ -24,5 +25,13 @@ module.exports = {
     },
     devServer: {
         contentBase: './bin'
-    }
+    },
+    plugins: [
+        new webpack.SourceMapDevToolPlugin({
+            filename: '[file].map',
+            exclude: [
+                'vendor/*.js'
+            ]
+        }),
+    ]
 };
