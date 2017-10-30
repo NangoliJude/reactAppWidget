@@ -1,4 +1,5 @@
 const path = require('path');
+
 const webpack = require('webpack');
 
 module.exports = {
@@ -8,7 +9,7 @@ module.exports = {
         filename: 'bundle.js',
         library: 'MyApp',
         libraryTarget: 'umd',
-        umdNamedDefine: true,
+        umdNamedDefine: true
     },
     module: {
         rules: [
@@ -19,7 +20,7 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'css-loader' ]
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
@@ -32,6 +33,6 @@ module.exports = {
             exclude: [
                 'vendor/*.js'
             ]
-        }),
+        })
     ]
 };

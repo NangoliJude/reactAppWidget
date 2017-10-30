@@ -1,16 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export default class UserItem extends React.Component {
-    render() {
-        const { user } = this.props;
-        return (
+const UserItem = (props) => {
+    const { user } = props;
+    const fullName = `${user.name.first} ${user.name.last}`;
+    return (
+        <div>
+            <img src={user.picture.thumbnail} alt={fullName} />
             <div>
-                <img src={user.picture.thumbnail} />
-                <div>
-                    <span>{ user.name.first } { user.name.last }</span>
-                    <span>{ user.email }</span>
-                </div>
+                <span>{fullName}</span>
+                <span>{ user.email }</span>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
+
+UserItem.propTypes = {
+    user: PropTypes.object
+};
+
+
+export default UserItem;

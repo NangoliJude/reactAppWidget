@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-
-import UserItem from './UserItem';
 import { fetchUsers } from '../actions/userAction';
 
-class UserList extends React.Component {
+import UserItem from './UserItem';
 
+
+class UserList extends React.Component {
     componentDidMount() {
         const userCount = 5;
         this.props.fetchUsers(userCount);
@@ -15,13 +16,12 @@ class UserList extends React.Component {
 
     render() {
         const { users } = this.props;
-        const usersList = (users.length == 0) ? null : this.props.users.map((user, id) => {
-            return (
-                <li key={id}>
+        const usersList = (users.length == 0) ? null : this.props.users.map((user) =>
+            (
+                <li key={user.email}>
                     <UserItem user={user} />
                 </li>
-            );
-        })
+            ));
 
         return (
             <ul>
@@ -31,14 +31,19 @@ class UserList extends React.Component {
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         users: state.users
-    }
+    };
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchUsers}, dispatch)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchUsers }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserList)
+UserList.propTypes = {
+    fetchUsers: PropTypes.func,
+    users: PropTypes.object
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserList);
