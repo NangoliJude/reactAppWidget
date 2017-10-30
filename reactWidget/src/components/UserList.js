@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -7,6 +8,10 @@ import { fetchUsers } from '../actions/userAction';
 
 import UserItem from './UserItem';
 
+const UserListUl = styled.ul`
+    list-style-type: none;
+    padding-left: 10px;
+`;
 
 class UserList extends React.Component {
     componentDidMount() {
@@ -24,9 +29,9 @@ class UserList extends React.Component {
             ));
 
         return (
-            <ul>
+            <UserListUl>
                 {usersList}
-            </ul>
+            </UserListUl>
         );
     }
 }
@@ -43,7 +48,7 @@ function mapDispatchToProps(dispatch) {
 
 UserList.propTypes = {
     fetchUsers: PropTypes.func,
-    users: PropTypes.object
+    users: PropTypes.array
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
