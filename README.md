@@ -1,5 +1,6 @@
 ## reactAppWidget
-React app as a UMD
+React app as a UMD.
+<br/>
 Simple implementation of a widget in react and embedding it in another application.
 
 App Installation
